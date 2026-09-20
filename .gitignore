@@ -1,3 +1,5 @@
 .env
 /node_modules
 /dist
+/src/lambda/add-doc-metadata/node_modules
+/src/lambda/view-doc-metadata/node_modules
