@@ -21,7 +21,7 @@ export const initiateUpload = async (req: Request, res: Response) => {
     });
   }
 
-  const key = `${Date.now()}-${fileName}`;
+  const key = `uploads/${Date.now()}-${fileName}`;
   const uploadId = await createMultipartUpload(key, contentType);
 
   const presignedUrls: string[] = [];
