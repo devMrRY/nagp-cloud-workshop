@@ -1,6 +1,7 @@
 import path from 'path';
 import { Request, Response } from 'express';
 import { completeMultipartUpload, createMultipartUpload, createPresignedPartUrl } from '../services/s3.service';
+import { Worker } from 'node:worker_threads';
 
 const PART_SIZE = 5 * 1024 * 1024; // 5 MB
 
@@ -52,3 +53,29 @@ export const completeUpload = async (req: Request, res: Response) => {
     result,
   });
 };
+
+export const loadTest = (req: Request, res: Response) => {
+  const workerPath = path.resolve(__dirname, "../workers/load-worker.js");
+
+  const worker = new Worker(workerPath);
+
+  worker.on("message", (result) => {
+    res.json(result);
+  });
+
+  worker.on("error", (error) => {
+    console.error("Worker error:", error);
+
+    if (!res.headersSent) {
+      res.status(500).json({
+        error: "Worker failed",
+      });
+    }
+  });
+
+  worker.on("exit", (code) => {
+    if (code !== 0) {
+      console.error(`Worker stopped with exit code ${code}`);
+    }
+  });
+}
