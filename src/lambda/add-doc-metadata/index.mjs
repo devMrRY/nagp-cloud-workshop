@@ -1,36 +1,26 @@
-import pg from "pg";
 import {
   S3Client,
   HeadObjectCommand
 } from "@aws-sdk/client-s3";
-
-const { Client } = pg;
+import { getPool } from "./db/pool.mjs";
 
 const s3 = new S3Client({});
 
 export const handler = async (event) => {
   console.log("S3 event:", JSON.stringify(event, null, 2));
 
-  const client = new Client({
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT || 5432),
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
+  let client;
 
   try {
-    await client.connect();
-    console.log('database connected successfully');
+    client = await getPool();
+
     for (const record of event.Records || []) {
       const bucketName = record.s3.bucket.name;
 
       const objectKey = decodeURIComponent(
         record.s3.object.key.replace(/\+/g, " ")
       );
+
       // Get metadata from S3
       const headResponse = await s3.send(
         new HeadObjectCommand({
@@ -38,6 +28,7 @@ export const handler = async (event) => {
           Key: objectKey
         })
       );
+
       const contentType = headResponse.ContentType || "unknown";
 
       console.log("File:", objectKey);
@@ -61,9 +52,9 @@ export const handler = async (event) => {
       statusCode: 200,
       body: "Metadata processed successfully"
     };
-  } catch(err) {
-    console.log(`Error: `, err);
-  }finally {
-    await client.end();
+
+  } catch (err) {
+    console.error("Error:", err);
+    throw err;
   }
 };
