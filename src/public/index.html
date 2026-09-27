@@ -63,6 +63,11 @@
       .upload-button:hover {
         background: #1d4ed8;
       }
+
+      .upload-button:disabled {
+        background: #1b4da2;
+        cursor: not-allowed;
+      }
     </style>
 
     <script defer>
@@ -76,6 +81,11 @@
 
       const updateButtonState = () => {
         const button = document.getElementById("uploadBtn");
+        if (uploading) {
+          button.classList.add("disabled");
+        } else {
+          button.classList.remove("disabled");
+        }
         button.textContent = uploading ? "Uploading..." : "Upload Document";
         button.disabled = uploading;
       };
