@@ -3,3 +3,4 @@
 /dist
 /lambda-build
 *.zip
+/assets/*.mp4

@@ -739,14 +739,9 @@ The development group has the following AWS managed policies:
 
 | Policy                           | Type        | Purpose                                      |
 | -------------------------------- | ----------- | -------------------------------------------- |
-| `AmazonEC2FullAccess`            | AWS managed | EC2 resource management                      |
-| `AmazonRDSFullAccess`            | AWS managed | RDS resource management                      |
 | `AmazonS3FullAccess`             | AWS managed | S3 resource management                       |
-| `AmazonVPCFullAccess`            | AWS managed | VPC and networking management                |
-| `AutoScalingFullAccess`          | AWS managed | Auto Scaling and instance refresh management |
 | `AWSLambda_FullAccess`           | AWS managed | Lambda management                            |
 | `CloudWatchFullAccessV2`         | AWS managed | CloudWatch monitoring and logs               |
-| `ElasticLoadBalancingFullAccess` | AWS managed | ALB and target group management              |
 | `IAMReadOnlyAccess`              | AWS managed | Read-only IAM access                         |
 
 The group also contains the customer-managed inline policy:
