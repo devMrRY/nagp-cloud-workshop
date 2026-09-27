@@ -871,7 +871,6 @@ Create a `.env` file in the root directory with the required environment variabl
 
 ```env
 PORT=4000
-DATABASE_URL=postgresql://user:password@localhost:5432/nagp_db
 AWS_REGION=eu-north-1
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
