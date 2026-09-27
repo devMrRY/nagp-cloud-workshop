@@ -27,8 +27,8 @@ The deployment architecture is designed so that:
 ## Useful Links
 
 - [Project component description documentation](./NAGP%20Cloud%20Computing%20Project.docx)
-- [Running Application Demo](https://youtu.be/u93OKjwAda8)
-- [AWS Configuration video](https://youtu.be/EC_2ZxzAhmU)
+- [Running Application Demo](https://youtu.be/u93OKjwAda8) | [Running Application Demo](./assets/running_app_demo.mp4)
+- [AWS Configuration video](https://youtu.be/EC_2ZxzAhmU) | [AWS Configuration video](./assets/aws_configuration_video.mp4)
 - [Add file metaData to RDS logs](./assets/add-doc-metaData-cloudwatch-logs.png)
 - [view RDS records cloudwatch logs](./assets/view-doc-metaData-cloudWatch-logs.png)
 - [view trigger-asg-refresh-cloudwatch-logs](./assets/trigger-asg-refresh-cloudwatch-logs.png)
