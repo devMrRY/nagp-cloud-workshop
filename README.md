@@ -24,9 +24,10 @@ The deployment architecture is designed so that:
 * New application deployments automatically trigger an EC2 Auto Scaling instance refresh.
 
 ---
+## Useful Links
 
-[Project documentation](./NAGP%20Cloud%20Computing%20Project.docx)
-
+- [Project documentation](./NAGP%20Cloud%20Computing%20Project.docx)
+---
 # Architecture
 
 ```text
